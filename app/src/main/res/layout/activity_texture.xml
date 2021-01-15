@@ -24,14 +24,18 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="选择文件" />
+            android:text="选择文件"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
 
         <Button
             android:id="@+id/surface_bt"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="surface播放" />
+            android:text="surface播放"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
     </LinearLayout>
 
 </LinearLayout>
