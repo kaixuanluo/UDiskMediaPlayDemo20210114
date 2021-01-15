@@ -49,15 +49,6 @@ public class SurfaceActivity extends BaseActivity implements SurfaceHolder.Callb
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        File file = new File(url);
-        mUri = Uri.fromFile(file);
-        if (file.exists()) {
-            Log.d(TAG, "onCreate: file.exists()");
-            String upLoadFileName = file.getName();
-//            url = file.getPath();
-        } else {
-            Log.d(TAG, "onCreate: file not exists()");
-        }
 
         if (mIsPrepared) {
             mMediaPlayer.setSurface(holder.getSurface());

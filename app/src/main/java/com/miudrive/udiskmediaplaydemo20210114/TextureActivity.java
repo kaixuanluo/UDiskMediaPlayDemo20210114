@@ -2,14 +2,11 @@ package com.miudrive.udiskmediaplaydemo20210114;
 
 import android.content.Intent;
 import android.graphics.SurfaceTexture;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
-
-import java.io.File;
 
 /**
  * @author created by luokaixuan
@@ -75,15 +72,6 @@ public class TextureActivity extends BaseActivity implements TextureView.Surface
         if (mIsPrepared) {
             mMediaPlayer.setSurface(mLastSurface);
         } else {
-            File file = new File(url);
-            mUri = Uri.fromFile(file);
-            if (file.exists()) {
-                Log.d(TAG, "onCreate: file.exists()");
-                String upLoadFileName = file.getName();
-//            url = file.getPath();
-            } else {
-                Log.d(TAG, "onCreate: file not exists()");
-            }
             beforePrepareWork();
             startPrepare();
         }

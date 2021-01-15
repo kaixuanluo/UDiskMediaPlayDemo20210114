@@ -27,8 +27,9 @@ public class BaseActivity extends AppCompatActivity implements MediaPlayer.OnVid
 
     protected MediaPlayer mMediaPlayer;
 
-    protected String url = "/storage/58AA-B60C/新建文件夹/5（视频）经典中文歌曲MV/张学友 - 头发乱了 - 2012张学友12世纪演唱会香港站.avi";
-//    protected String url = "/storage/7A2D-D648/BLACKPINK_265.mp4";
+    protected String url = "";
+    //    protected String url = "/storage/7A2D-D648/BLACKPINK_265.mp4";
+    protected Uri mUri;
     /**
      * 上次视频显示容器
      */
@@ -53,11 +54,13 @@ public class BaseActivity extends AppCompatActivity implements MediaPlayer.OnVid
     private static String[] PERMISSIONS_STORAGE = {
             "android.permission.READ_EXTERNAL_STORAGE",
             "android.permission.WRITE_EXTERNAL_STORAGE"};
-    protected Uri mUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mUri = Uri.parse("android.resource://" + getPackageName() + "/raw/test");
 
         verifyStoragePermissions();
 
@@ -116,6 +119,7 @@ public class BaseActivity extends AppCompatActivity implements MediaPlayer.OnVid
                             String upLoadFilePath = file.toString();
                             String upLoadFileName = file.getName();
                             url = file.getPath();
+                            mUri = Uri.fromFile(file);
                             beforePrepareWork();
                             startPrepare();
                         }
@@ -262,7 +266,8 @@ public class BaseActivity extends AppCompatActivity implements MediaPlayer.OnVid
             Log.d(TAG, "mMediaPlayer.setDataSource(url); " + url);
             Log.d(TAG, "mMediaPlayer.setDataSource(uri); " + mUri);
             //设置 播放器的播放源
-            mMediaPlayer.setDataSource(url);
+//            mMediaPlayer.setDataSource(url);
+            mMediaPlayer.setDataSource(this, mUri);
             Log.d(TAG, "mMediaPlayer.setDataSource(musicCurrentPlay.getTrackUrl()); callbackEnd ... ");
             Log.d(TAG, "mMediaPlayer.prepareAsync(); ... ");
             //调用 播放器的异步准备
