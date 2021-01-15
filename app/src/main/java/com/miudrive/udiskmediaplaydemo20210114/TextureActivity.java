@@ -69,6 +69,7 @@ public class TextureActivity extends BaseActivity implements TextureView.Surface
             mTextureView.setSurfaceTexture(mLastSurfaceTexture);
         }
 
+
         if (mIsPrepared) {
             mMediaPlayer.setSurface(mLastSurface);
         } else {
